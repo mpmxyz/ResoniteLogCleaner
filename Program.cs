@@ -25,7 +25,8 @@ Regex[] steamIDPatterns = [
 
 HashSet<string> nonReplacedKeywords = ["Local", "Userspace", "Home"];
 
-foreach (var path in args) {
+foreach (var path in args)
+{
     var content = File.ReadAllText(path);
     var pseudoUserdir = new PseudonymGenerator("USER_DIR");
     var pseudoUserID = new PseudonymGenerator("U-USER");
@@ -42,7 +43,8 @@ foreach (var path in args) {
         (userIDPatterns, pseudoUserID),
         (worldNamePatterns, pseudoWorld),
         (steamIDPatterns, pseudoSteamID),
-    }) {
+    })
+    {
         var keywords = patternList
             .SelectMany(regex => regex.Matches(content))
             .Select(m => m.Groups[1].Value)
