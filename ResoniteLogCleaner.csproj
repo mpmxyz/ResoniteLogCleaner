@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Description>Removes most personal data from Resonite logs</Description>
+    <Copyright>CC0</Copyright>
+    <AssemblyName>ResoniteLogCleaner</AssemblyName>
+    <Version>1.0.0</Version>
+    <PackageProjectUrl>$(PROJECT_URL)</PackageProjectUrl>
+    <PackageReleaseNotes>$(RELEASE_NOTES)</PackageReleaseNotes>
+  </PropertyGroup>
+  <Target Name="CheckGithubVariables">
+  	<Error Condition="'$(RELEASE_VERSION)' != '' And '$(RELEASE_VERSION)' != '$(Version)'" Text="Difference between version being built ($(Version)) and version being published on the github flow! ($(RELEASE_VERSION))&#xD;&#xA;Ensure that the versions in the csproj file and in your release flow trigger match!" />
+  	<Error Condition="'$(ASSEMBLY_NAME)' != '' And '$(ASSEMBLY_NAME)' != '$(AssemblyName)'" Text="Difference between built 'AssemblyName' ($(AssemblyName)) and 'ASSEMBLY_NAME' expected by github! ($(ASSEMBLY_NAME))&#xD;&#xA;Ensure that the names in the csproj file and in your workflow environment match!" />
+  </Target>
+</Project>
