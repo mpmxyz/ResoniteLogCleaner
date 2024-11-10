@@ -32,7 +32,7 @@ defaults:
   run:
     working-directory: "./repo"
 jobs:
-  build-MonkeyLoader:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Fetch repository
